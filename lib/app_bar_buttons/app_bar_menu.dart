@@ -18,15 +18,29 @@ class AppBarMenu extends PopupRoute<void> {
       child: Align(
         alignment: Alignment.topRight,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, kToolbarHeight + 8, 16, 0),
+          padding: const EdgeInsets.fromLTRB(0, kToolbarHeight + 8, 20, 0),
           child: ClipPath(
-            clipper: _AppBarMenuClipper(),
-            child: Container(
-              width: 200,
-              height: 200,
-              color: Colors.cyan,
-            ),
-          ),
+              clipper: _AppBarMenuClipper(),
+              child: Container(
+                width: 210,
+                child: Material(
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    children: [
+                      ListTile(
+                        leading: Icon(Icons.info, color: Colors.black87),
+                        title: Text("Info"),
+                      ),
+                      Divider(),
+                      ListTile(
+                        leading: Icon(Icons.translate, color: Colors.black87),
+                        title: Text("Menu language"),
+                      ),
+                    ],
+                  ),
+                ),
+              )),
         ),
       ),
     );
@@ -38,21 +52,23 @@ class AppBarMenu extends PopupRoute<void> {
 
 class _AppBarMenuClipper extends CustomClipper<Path> {
   var radius = 15.0;
-  var radius2 = 8.0;
-  var triangleHeight = 20.0;
-  var triangleWidth = 35.0;
+  var triangleHeight = 15.0;
+  var triangleWidth = 25.0;
+  var triangleOffset = 4.0;
 
   @override
   Path getClip(Size size) {
     Path path = Path();
 
     path.moveTo(radius, triangleHeight);
-    path.lineTo(size.width - triangleWidth - 2, triangleHeight);
-    path.arcToPoint(Offset(size.width - triangleWidth + 2, triangleHeight - 2), radius: Radius.circular(radius2), clockwise: false);
-    path.lineTo(size.width - triangleWidth / 2 - 1, 2);
-    path.arcToPoint(Offset(size.width - triangleWidth / 2 + 1, 2), radius: Radius.circular(radius2));
-    path.lineTo(size.width - 2, triangleHeight - 2);
-    path.arcToPoint(Offset(size.width, triangleHeight + 2), radius: Radius.circular(radius2));
+    path.lineTo(size.width - triangleWidth - triangleOffset, triangleHeight);
+    path.arcToPoint(Offset(size.width - triangleWidth + triangleOffset, triangleHeight - triangleOffset),
+        radius: Radius.circular(radius), clockwise: false);
+    path.lineTo(size.width - triangleWidth / 2 - 1, triangleOffset);
+    path.arcToPoint(Offset(size.width - triangleWidth / 2 + 1, triangleOffset),
+        radius: Radius.circular(radius));
+    path.lineTo(size.width - triangleOffset, triangleHeight - triangleOffset);
+    path.arcToPoint(Offset(size.width, triangleHeight + triangleOffset), radius: Radius.circular(radius));
     path.lineTo(size.width, size.height - radius);
     path.arcToPoint(Offset(size.width - radius, size.height), radius: Radius.circular(radius));
     path.lineTo(radius, size.height);

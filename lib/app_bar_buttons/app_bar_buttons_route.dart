@@ -43,7 +43,7 @@ class _AppBarButtonsState extends State<AppBarButtons> {
             expandedHeight: 250,
             flexibleSpace: FlexibleSpaceBar(
               title: AppBarTitle(),
-              background: Placeholder(color: Colors.indigo,)
+              background: Container(child: Placeholder(), color: Colors.deepPurple,)
             ),
           ),
           SliverList(
