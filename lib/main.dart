@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meets_wolt/animated_header/animated_header_route.dart';
 import 'package:flutter_meets_wolt/app_bar_buttons/app_bar_buttons_route.dart';
 import 'package:flutter_meets_wolt/menu_route.dart';
 
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/menu",
       routes: {
         '/menu': (_) => MenuRoute(),
-        '/app-bar-buttons': (_) => AppBarButtons(),
-        '/animated-header': (_) => Scaffold(appBar: AppBar(title: Text("Animated header"),), body: Placeholder(),),
+        '/app-bar-buttons': (_) => AppBarButtonsRoute(),
+        '/animated-header': (_) => AnimatedHeaderRoute(),
         '/like-button': (_) => Scaffold(appBar: AppBar(title: Text("Like button"),), body: Placeholder(),),
       },
     );

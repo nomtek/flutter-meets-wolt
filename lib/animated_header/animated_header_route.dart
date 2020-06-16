@@ -3,12 +3,12 @@ import 'package:flutter_meets_wolt/app_bar_buttons/app_bar_button.dart';
 import 'package:flutter_meets_wolt/app_bar_buttons/app_bar_menu.dart';
 import 'package:flutter_meets_wolt/shared/app_bar_title.dart';
 
-class AppBarButtonsRoute extends StatefulWidget {
+class AnimatedHeaderRoute extends StatefulWidget {
   @override
-  _AppBarButtonsRouteState createState() => _AppBarButtonsRouteState();
+  _AnimatedHeaderRouteState createState() => _AnimatedHeaderRouteState();
 }
 
-class _AppBarButtonsRouteState extends State<AppBarButtonsRoute> {
+class _AnimatedHeaderRouteState extends State<AnimatedHeaderRoute> {
 
   bool _isMenuShown = false;
 
@@ -16,7 +16,7 @@ class _AppBarButtonsRouteState extends State<AppBarButtonsRoute> {
   Widget build(BuildContext context) {
     return Material(
       child: CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        // physics: BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             brightness: Brightness.light,
@@ -43,7 +43,7 @@ class _AppBarButtonsRouteState extends State<AppBarButtonsRoute> {
             expandedHeight: 250,
             flexibleSpace: FlexibleSpaceBar(
               title: AppBarTitle(),
-              background: Container(child: Placeholder(), color: Colors.deepPurple,)
+              background: Container(child: Placeholder(), color: Colors.purple[100],)
             ),
           ),
           SliverList(
